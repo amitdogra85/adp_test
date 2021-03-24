@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 24 18:04:43 IST 2021
+https\://repo.maven.apache.org/maven2/.lastUpdated=1616589283897
+https\://repository.esi.adp.com/public/.error=Could not transfer artifact org.codehaus.plexus\:plexus-velocity\:pom\:1.1.7 from/to ADP-JFROG (https\://repository.esi.adp.com/public)\: repository.esi.adp.com
+@default-ADP-JFROG-https\://repository.esi.adp.com/public/.lastUpdated=1616589283252

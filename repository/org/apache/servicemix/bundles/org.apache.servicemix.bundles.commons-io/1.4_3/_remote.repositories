@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Feb 23 23:26:37 IST 2021
+org.apache.servicemix.bundles.commons-io-1.4_3.pom>central=
+org.apache.servicemix.bundles.commons-io-1.4_3-sources.jar>central=
+org.apache.servicemix.bundles.commons-io-1.4_3.jar>central=

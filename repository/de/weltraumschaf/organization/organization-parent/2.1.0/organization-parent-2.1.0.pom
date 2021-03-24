@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!--
+      TIPS:
+
+      - Use "mvn versions:display-dependency-updates" to see what dependencies
+        have updates available.
+
+      - Use "mvn versions:display-plugin-updates" to see whan plugins have
+        updates available.
+
+      - use "mvn clean install site site:stage -DstagingDirectory=$dir%"
+        to stage the site with modules to a given direcotry.
+    -->
+
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>9</version>
+    </parent>
+
+    <groupId>de.weltraumschaf.organization</groupId>
+    <artifactId>organization-parent</artifactId>
+    <version>2.1.0</version>
+    <packaging>pom</packaging>
+
+    <name>Weltraumschaf's Organization Parent</name>
+    <description>
+        Contains the organization parent pom for weltraumschaf.de.
+    </description>
+    <url>http://www.weltraumschaf.de/</url>
+
+    <organization>
+        <name>Weltraumschaf</name>
+        <url>http://www.weltraumschaf.de</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <id>Weltraumschaf</id>
+            <name>Sven Strittmatter</name>
+            <email>weltraumschaf@googlemail.com</email>
+            <roles>
+                <role>Project Lead</role>
+                <role>Developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>THE BEER-WARE LICENSE</name>
+            <url>http://www.weltraumschaf.de/the-beer-ware-license.txt</url>
+            <distribution>repo</distribution>
+            <comments>
+                LICENSE
+
+                "THE BEER-WARE LICENSE" (Revision 42):
+                "Sven Strittmatter" &lt;weltraumschaf(at)googlemail(dot)com&gt; wrote this file.
+                As long as you retain this notice you can do whatever you want with
+                this stuff. If we meet some day, and you think this stuff is worth it,
+                you can buy me a beer in return.
+            </comments>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git://github.com/Weltraumschaf/organization.git</connection>
+        <developerConnection>scm:git:git@github.com:Weltraumschaf/organization.git</developerConnection>
+        <url>https://github.com/Weltraumschaf/organization.git</url>
+        <tag>2.1.0</tag>
+    </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <project.build.version.source>1.7</project.build.version.source>
+        <project.build.version.target>1.7</project.build.version.target>
+
+        <maven.version>3.0.3</maven.version>
+
+        <!-- http://docs.sonarqube.org/display/SONAR/Analysis+Parameters -->
+        <sonar.host.url>http://johan.weltraumschaf.de:9000</sonar.host.url>
+        <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+        <sonar.language>java</sonar.language>
+
+        <dependency.junit.version>4.12</dependency.junit.version>
+        <dependency.hamcrest.version>1.3</dependency.hamcrest.version>
+        <dependency.mockito.version>1.10.8</dependency.mockito.version>
+        <dependency.multithreadedtc.version>1.01</dependency.multithreadedtc.version>
+        <dependency.equalsverifier.version>2.0.2</dependency.equalsverifier.version>
+        <dependency.jsonassert.version>1.3.0</dependency.jsonassert.version>
+
+        <extension.maven-scm-provider-gitexe.version>1.9.2</extension.maven-scm-provider-gitexe.version>
+        <extension.maven-scm-manager-plexus.version>1.9.2</extension.maven-scm-manager-plexus.version>
+        <extension.wagon-gitsite.version>0.3.1</extension.wagon-gitsite.version>
+    </properties>
+
+    <prerequisites>
+        <maven>${maven.version}</maven>
+    </prerequisites>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${dependency.junit.version}</version>
+            <type>jar</type>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.hamcrest</groupId>
+                    <artifactId>hamcrest-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${dependency.mockito.version}</version>
+            <type>jar</type>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.hamcrest</groupId>
+                    <artifactId>hamcrest-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+            <version>${dependency.hamcrest.version}</version>
+            <type>jar</type>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.googlecode.multithreadedtc</groupId>
+            <artifactId>multithreadedtc</artifactId>
+            <version>${dependency.multithreadedtc.version}</version>
+            <type>jar</type>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.skyscreamer</groupId>
+            <artifactId>jsonassert</artifactId>
+            <version>${dependency.jsonassert.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>nl.jqno.equalsverifier</groupId>
+            <artifactId>equalsverifier</artifactId>
+            <version>${dependency.equalsverifier.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <defaultGoal>install</defaultGoal>
+
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.scm</groupId>
+                <artifactId>maven-scm-provider-gitexe</artifactId>
+                <version>${extension.maven-scm-provider-gitexe.version}</version>
+            </extension>
+
+            <extension>
+                <groupId>org.apache.maven.scm</groupId>
+                <artifactId>maven-scm-manager-plexus</artifactId>
+                <version>${extension.maven-scm-manager-plexus.version}</version>
+            </extension>
+
+            <extension>
+                <groupId>org.kathrynhuxtable.maven.wagon</groupId>
+                <artifactId>wagon-gitsite</artifactId>
+                <version>${extension.wagon-gitsite.version}</version>
+            </extension>
+        </extensions>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.kryshchuk.maven.plugins</groupId>
+                    <artifactId>umlet-maven-plugin</artifactId>
+                    <version>1.2</version>
+                    <configuration>
+                        <filesets>
+                            <fileset>
+                                <directory>src/site/resources/uml</directory>
+                                <includes>
+                                    <include>**/*.uxf</include>
+                                </includes>
+                                <excludes />
+                            </fileset>
+                        </filesets>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>convert-uml</id>
+                            <goals>
+                                <goal>convert</goal>
+                            </goals>
+                            <configuration>
+                                <format>png</format>
+                                <outputDirectory>target/site/images</outputDirectory>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>1.8</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>2.6</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>2.7</version>
+
+                    <configuration>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.8.2</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.19.1</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>2.6</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>2.5.2</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>2.10</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.4</version>
+                    <!-- http://tech-mind.blogspot.de/2009/01/configure-site-plugin-for-maven-multi.html -->
+                    <!--<inherited>false</inherited>-->
+
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.maven.doxia</groupId>
+                            <artifactId>doxia-module-markdown</artifactId>
+                            <version>1.6</version>
+                        </dependency>
+                    </dependencies>
+
+                    <executions>
+                        <execution>
+                            <id>attach-descriptor</id>
+                            <goals>
+                                <goal>attach-descriptor</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.5.1</version>
+
+                    <configuration>
+                        <source>${project.build.version.source}</source>
+                        <target>${project.build.version.target}</target>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                        <showWarnings>true</showWarnings>
+                        <showDeprecation>true</showDeprecation>
+                        <compilerArgument>-Xlint:unchecked</compilerArgument>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>2.10.3</version>
+                    <configuration>
+                        <bottom>
+                            Copyright &amp;copy; 2014 &lt;a href="http://www.weltraumschaf.de/" target="_blank"&gt;
+                            Sven Strittmatter&lt;/a&gt;. All Rights Reserved.
+                        </bottom>
+
+                        <doctitle>${project.name} - ${project.version}</doctitle>
+                        <windowtitle>${project.name} - ${project.version}</windowtitle>
+                        <show>private</show>
+                        <charset>${project.build.sourceEncoding}</charset>
+                        <docencoding>${project.build.sourceEncoding}</docencoding>
+                        <source>${project.build.version.source}</source>
+
+                        <links>
+                            <link>http://docs.oracle.com/javase/7/docs/api/</link>
+                            <!-- test dependencies -->
+                            <link>http://junit.sourceforge.net/javadoc/</link>
+                            <link>http://docs.mockito.googlecode.com/hg/latest/</link>
+                            <link>http://hamcrest.org/JavaHamcrest/javadoc/1.3/</link>
+                            <link>http://www.cs.umd.edu/projects/PL/multithreadedtc/docs/</link>
+                        </links>
+                    </configuration>
+
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <goals>
+                                <goal>javadoc</goal>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>1.4.1</version>
+
+                    <executions>
+                        <execution>
+                            <id>enforce</id>
+
+                            <configuration>
+                                <rules>
+                                    <dependencyConvergence />
+                                    <requirePluginVersions />
+                                    <requireJavaVersion>
+                                        <version>${project.build.version.target}</version>
+                                    </requireJavaVersion>
+                                    <requireMavenVersion>
+                                        <version>${maven.version}</version>
+                                    </requireMavenVersion>
+                                </rules>
+                            </configuration>
+
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>2.4.3</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>2.5.3</version>
+
+                    <configuration>
+                        <localCheckout>true</localCheckout>
+                        <pushChanges>false</pushChanges>
+                        <goals>deploy</goals>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>2.17</version>
+
+                    <dependencies>
+                        <dependency>
+                            <groupId>de.weltraumschaf</groupId>
+                            <artifactId>java-build-tools</artifactId>
+                            <version>1.0.0</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-changelog-plugin</artifactId>
+                    <version>2.3</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-pmd-plugin</artifactId>
+                    <version>3.6</version>
+
+                    <configuration>
+                        <linkXRef>false</linkXRef>
+                        <includeTests>true</includeTests>
+                        <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
+                        <minimumTokens>100</minimumTokens>
+                        <targetJdk>${project.build.targetJdk}</targetJdk>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-plugin-plugin</artifactId>
+                    <version>3.4</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>2.9</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-jxr-plugin</artifactId>
+                    <version>2.5</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>1.6</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.0.0</version>
+
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>versions-maven-plugin</artifactId>
+                    <version>2.2</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>findbugs-maven-plugin</artifactId>
+                    <version>3.0.3</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>javancss-maven-plugin</artifactId>
+                    <version>2.1</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>jdepend-maven-plugin</artifactId>
+                    <version>2.0</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>taglist-maven-plugin</artifactId>
+                    <version>2.4</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>3.0.1</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>com.mycila.maven-license-plugin</groupId>
+                    <artifactId>maven-license-plugin</artifactId>
+                    <version>1.10.b1</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>0.7.6.201602180812</version>
+
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+
+                        <execution>
+                            <id>report</id>
+                            <phase>prepare-package</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <profiles>
+        <!-- http://jpz-log.info/archives/2010/12/14/1446/ -->
+        <profile>
+            <id>release-sign-artifacts</id>
+
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+
+                        <configuration>
+                            <keyname>45585598</keyname>
+                        </configuration>
+
+                        <executions>
+                            <execution>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>

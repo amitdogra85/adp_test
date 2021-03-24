@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 24 18:04:13 IST 2021
+https\://repo.maven.apache.org/maven2/.lastUpdated=1616589253388
+https\://repository.esi.adp.com/public/.error=Could not transfer artifact rhino\:js\:pom\:1.5R4.1 from/to ADP-JFROG (https\://repository.esi.adp.com/public)\: repository.esi.adp.com
+@default-ADP-JFROG-https\://repository.esi.adp.com/public/.lastUpdated=1616589252763

@@ -1,0 +1,6 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 24 18:16:14 IST 2021
+https\://repo.maven.apache.org/maven2/.lastUpdated=1616589974173
+https\://repository.esi.adp.com/public/.error=Could not transfer artifact com.adp.globalview\:ui\:pom\:1.07 from/to ADP-JFROG (https\://repository.esi.adp.com/public)\: repository.esi.adp.com
+https\://repo.maven.apache.org/maven2/.error=
+@default-ADP-JFROG-https\://repository.esi.adp.com/public/.lastUpdated=1616589973898

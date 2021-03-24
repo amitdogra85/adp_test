@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 24 18:10:55 IST 2021
+https\://repo.maven.apache.org/maven2/.lastUpdated=1616589655185
+https\://repository.esi.adp.com/public/.error=Could not transfer artifact javax.mail\:mail\:jar\:sources\:1.5.0-b01 from/to ADP-JFROG (https\://repository.esi.adp.com/public)\: repository.esi.adp.com
+@default-ADP-JFROG-https\://repository.esi.adp.com/public/.lastUpdated=1616589652076
